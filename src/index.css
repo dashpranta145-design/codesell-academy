@@ -4,6 +4,95 @@
 
 /* CSS Custom Properties for Theme */
 @layer base {
+  @import "tailwindcss";
+
+  /* CSS Custom Properties for Theme */
+  :root {
+    --color-primary: #2563eb;
+    --color-secondary: #1e293b;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Custom Components */
+  .btn-primary {
+    @apply bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition-all hover:bg-blue-700;
+  }
+
+  .btn-primary:disabled {
+    @apply bg-gray-400 cursor-not-allowed;
+  }
+
+  @keyframes rotateIn {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%) rotate(-180deg) scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) rotate(0deg) scale(1);
+    }
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  /* --- Small helper animation utilities --- */
+  .animate-rotateIn {
+    animation: rotateIn 2s ease-out;
+  }
+
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+
+  .animate-float-delay {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-rotateIn,
+    .animate-spin-slow,
+    .animate-float,
+    .animate-float-delay {
+      animation: none !important;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .chat-window {
+      height: 350px;
+      width: 300px;
+      margin-bottom: -30px;
+    }
+  }
   :root {
     --color-primary: #2563eb;
     --color-secondary: #1e293b;
