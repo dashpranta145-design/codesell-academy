@@ -42,7 +42,7 @@ const AICareerCounselor: React.FC = () => {
         },
       });
 
-      const aiMessage: Message = { sender: "ai", text: response.text };
+      const aiMessage: Message = { sender: "ai", text: response.text ?? "" };
       setMessages((prev) => [...prev, aiMessage]);
     } catch (error) {
       console.error("Error fetching AI response:", error);

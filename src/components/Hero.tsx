@@ -1,13 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const NeuralLogo = () => {
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
+    const maybeCtx = canvas.getContext("2d");
+    if (!maybeCtx) return;
+    const ctx = maybeCtx;
+
     canvas.width = 160;
     canvas.height = 160;
 
@@ -16,7 +19,17 @@ const NeuralLogo = () => {
     const radius = 55;
 
     class Node {
-      constructor(angle, layer) {
+      angle: number;
+      layer: number;
+      radius: number;
+      size: number;
+      pulsePhase: number;
+      pulseSpeed: number;
+      x: number = 0;
+      y: number = 0;
+      currentSize: number = 0;
+
+      constructor(angle: number, layer: number) {
         this.angle = angle;
         this.layer = layer;
         this.radius = layer === 0 ? 0 : radius * layer;
@@ -81,10 +94,14 @@ const NeuralLogo = () => {
     }
 
     class Connection {
-      constructor(node1, node2) {
+      node1: Node;
+      node2: Node;
+      particles: { progress: number; speed: number; size: number }[] = [];
+      maxParticles: number;
+
+      constructor(node1: Node, node2: Node) {
         this.node1 = node1;
         this.node2 = node2;
-        this.particles = [];
         this.maxParticles = 2;
       }
 
@@ -151,8 +168,8 @@ const NeuralLogo = () => {
       }
     }
 
-    const nodes = [];
-    const connections = [];
+    const nodes: Node[] = [];
+    const connections: Connection[] = [];
 
     nodes.push(new Node(0, 0));
 
@@ -190,10 +207,10 @@ const NeuralLogo = () => {
       connections.push(new Connection(nodes[i], nodes[crossIndex]));
     }
 
-    let animationId;
+    let animationId: number | undefined;
 
     function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas!.width, canvas!.height);
 
       nodes.forEach((node) => node.update());
       connections.forEach((conn) => {
@@ -248,7 +265,7 @@ const RotatingText = () => {
           {words[currentIndex]}
         </span>
         <span
-          className={`absolute inset-0 flex items-center justify-center font-bold text-xxl md:text-2xl text-cyan-500 transition-all duration-3000 ease-in-out ${
+          className={`absolute inset-0 flex items-center justify-center font-bold text-xl md:text-2xl text-cyan-500 transition-all duration-3000 ease-in-out ${
             isAnimating
               ? "translate-y-0 opacity-100"
               : "translate-y-[100%] opacity-0"
@@ -550,7 +567,7 @@ const Hero = () => {
         </div>
       </section>
 
-      <style jsx>{`
+      <style>{`
         @keyframes rotateIn {
           0% {
             opacity: 0;
