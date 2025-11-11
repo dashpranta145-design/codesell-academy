@@ -8,7 +8,6 @@ export default {
         serif: ["Playfair Display", "serif"],
       },
       colors: {
-        // Microsoft Blue - Professional & Trustworthy
         primary: "#0078d4",
         "primary-light": "#50e6ff",
         "primary-dark": "#005a9e",

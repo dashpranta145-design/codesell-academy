@@ -269,7 +269,7 @@ const TeamPage: React.FC = () => {
                 to join our growing team.
               </p>
               <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-pink-500 text-white font-bold rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105">
-                Apply Now →
+                <a href="/contact"> Apply Now →</a>
               </button>
             </div>
           </div>
