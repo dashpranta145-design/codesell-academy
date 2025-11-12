@@ -9,7 +9,7 @@ const Founder: React.FC = () => {
             <img
               src="/images/Sanjit Dash.webp"
               alt="Sanjit Dash, Founder"
-              className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-primary"
+              className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-2"
             />
             <div className="absolute inset-0 rounded-full shadow-2xl shadow-primary/50 animate-pulse-slow"></div>
           </div>

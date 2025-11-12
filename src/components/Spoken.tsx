@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Header";
+import { Link } from "react-router-dom";
 
 import FloatingBackground from "./FloatingBackground";
 
@@ -561,12 +562,12 @@ const Spoken: React.FC = () => {
                 Join CodeSell Academy's Spoken English course and unlock global
                 opportunities!
               </p>
-              <a
-                href="/courses"
-                className="inline-block px-8 py-4 bg-white text-primary font-bold rounded-full hover:scale-105 transition-transform"
+              <Link
+                to="/courses"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-pink-500 text-white font-bold rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105"
               >
                 Start Speaking Confidently →
-              </a>
+              </Link>
             </div>
           </div>
         </article>
