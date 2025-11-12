@@ -20,7 +20,7 @@ const coursesData: Course[] = [
   {
     title: "Spoken",
     description: "Transform the way you speak with this dynamic spoken course.",
-    image: "/images/spoken-english.png",
+    image: "/images/spoken-english.PNG",
   },
 ];
 

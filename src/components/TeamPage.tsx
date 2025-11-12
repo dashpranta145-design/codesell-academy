@@ -18,7 +18,7 @@ const teamMembers: TeamMember[] = [
     id: 1,
     name: "Sanjit Dash",
     role: "Founder & Lead Instructor",
-    image: "src/images/Sanjit Dash.webp",
+    image: "/images/Sanjit Dash.webp",
     bio: "Passionate educator with 3+ years of experience in web development and digital marketing. Dedicated to making tech education accessible to everyone.",
     expertise: [
       "Web Development",
@@ -32,7 +32,7 @@ const teamMembers: TeamMember[] = [
     id: 2,
     name: "Sweety Reza",
     role: "Co-Ordinator & Trainer",
-    image: "src/images/Sweety.png",
+    image: "/images/Sweety.png",
     bio: "Expert coordinator ensuring smooth operations and quality training delivery. Specializes in student engagement and curriculum development.",
     expertise: [
       "Project Management",
@@ -46,7 +46,7 @@ const teamMembers: TeamMember[] = [
     id: 3,
     name: "Sajib Das Rinku",
     role: "Lead Course Designer",
-    image: "src/images/sajib.jpg",
+    image: "/images/sajib.jpg",
     bio: "Creative course designer who transforms complex technical concepts into engaging, easy-to-understand learning experiences.",
     expertise: [
       "Frontend Development",
@@ -61,7 +61,7 @@ const teamMembers: TeamMember[] = [
     id: 4,
     name: "Mst. Babli",
     role: "Lead Trainer Of Digital Marketing",
-    image: "src/images/Babli.png",
+    image: "/images/Babli.png",
     bio: "Dedicated to student success with a focus on personalized support, career guidance, and ensuring every student achieves their goals.",
     expertise: [
       "Digital Marketing",
@@ -91,7 +91,7 @@ const teamMembers: TeamMember[] = [
     id: 6,
     name: "Anik Das",
     role: "Mentor Of Web-Development",
-    image: "src/images/Anik-Das.png",
+    image: "/images/Anik-Das.png",
     bio: "Expert in guiding learners through modern tools, clean coding practices, and real-world problem-solving to grow into confident, professional web developers.",
     expertise: ["Back-End Development", "MERN", "DSA", "Career Guidance"],
     experience: "2 years in Building Web Application",
@@ -100,7 +100,7 @@ const teamMembers: TeamMember[] = [
     id: 7,
     name: "Mohammad Towhidul Islam",
     role: "Trainer Of Digital Marketing",
-    image: "src/images/Tawhid.png",
+    image: "/images/Tawhid.png",
     bio: "Specialized in delivering practical, market-driven digital marketing training that prepares learners to excel in real business environments.",
     expertise: ["Digital Marketing", "Wordpress", "Entrepreneurship"],
     experience: "2 years in global & local marketplace",
