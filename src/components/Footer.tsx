@@ -58,7 +58,7 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h2 className="text-xl font-bold text-primary mb-4">Quick Links</h2>
+            <h2 className="text-xl font-bold text-white mb-4">Quick Links</h2>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -97,7 +97,7 @@ const Footer: React.FC = () => {
 
           {/* Social */}
           <div>
-            <h2 className="text-xl font-bold text-primary mb-4">
+            <h2 className="text-xl font-bold text-white mb-4">
               Connect With Us
             </h2>
             <div className="flex items-center gap-4">
