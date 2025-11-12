@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* About */}
           <div className="md:col-span-2 lg:col-span-1">
-            <h2 className="font-serif text-xl font-bold bg-gradient-to-r from-pink-500 to-cyan-300  bg-clip-text text-transparent">
+            <h2 className="font-serif text-2xl font-bold bg-gradient-to-r from-pink-500 to-cyan-300  bg-clip-text text-transparent">
               CodeSell Academy
             </h2>
             <p className="text-gray-200 leading-relaxed">
