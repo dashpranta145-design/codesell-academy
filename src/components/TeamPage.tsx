@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "./Header";
-
+import { Link } from "react-router-dom";
 import FloatingBackground from "./FloatingBackground";
 
 interface TeamMember {
@@ -268,9 +268,12 @@ const TeamPage: React.FC = () => {
                 We're always looking for passionate educators and tech experts
                 to join our growing team.
               </p>
-              <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-pink-500 text-white font-bold rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105">
-                <a href="/contact"> Apply Now →</a>
-              </button>
+              <Link
+                to="/contact"
+                className="inline-block px-8 py-4 bg-gradient-to-r from-cyan-500 to-pink-500 text-white font-bold rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105"
+              >
+                Apply Now →
+              </Link>
             </div>
           </div>
         </div>
