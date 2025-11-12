@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
           <div className="md:col-span-2 lg:col-span-1">
             <h2 className="font-serif text-2xl font-bold bg-gradient-to-r from-pink-500 to-cyan-300  bg-clip-text text-transparent">
               CodeSell Academy
-            </h2>
+            </h2>{" "}
             <p className="text-gray-200 leading-relaxed">
               We are dedicated to providing accessible, high-quality education
               in the most in-demand tech fields. Our mission is to empower
