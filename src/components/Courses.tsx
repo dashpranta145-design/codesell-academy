@@ -10,17 +10,17 @@ const coursesData: Course[] = [
   {
     title: "Web Development",
     description: "Learn HTML, CSS, JS and build full websites from scratch.",
-    image: "src/images/Web-Development1.jpg",
+    image: "/images/Web-Development1.jpg",
   },
   {
     title: "Digital Marketing",
     description: "Master SEO, Facebook Ads, Google Ads and grow businesses.",
-    image: "src/images/digital-marketing.jpg",
+    image: "/images/digital-marketing.jpg",
   },
   {
     title: "Spoken",
     description: "Transform the way you speak with this dynamic spoken course.",
-    image: "src/images/spoken-english.png",
+    image: "/images/spoken-english.png",
   },
 ];
 

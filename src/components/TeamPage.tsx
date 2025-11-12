@@ -76,7 +76,7 @@ const teamMembers: TeamMember[] = [
     id: 5,
     name: "Samiya Rahman Khadiza",
     role: "Trainer of Front-End Develeopment",
-    image: "src/images/",
+    image: "/images/Khadiza.png",
     bio: "Expertise in creating industry-relevant, hands-on learning programs that prepare students for real-world challenges.",
     expertise: [
       "Front-End Development",
