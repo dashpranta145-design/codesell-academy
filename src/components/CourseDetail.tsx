@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import Header from "./Header";
+import { Link } from "react-router-dom";
 
 import FloatingBackground from "./FloatingBackground";
 
@@ -450,7 +451,12 @@ const CourseDetail: React.FC = () => {
                 today
               </p>
               <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-pink-500 text-white font-bold rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105">
-                <a href="/contact"> Enroll Now →</a>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-pink-500 text-white font-bold rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105"
+                >
+                  Enroll Now →
+                </Link>
               </button>
             </div>
           </div>
