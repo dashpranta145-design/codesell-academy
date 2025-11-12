@@ -81,7 +81,7 @@ const Footer: React.FC = () => {
               <li>
                 <Link
                   to="/contact"
-                  className="inline-block px-8 py-4 bg-gradient-to-r from-cyan-500 to-pink-500 text-white font-bold rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105"
+                  className="hover:text-primary transition-colors"
                 >
                   Apply Now →
                 </Link>
