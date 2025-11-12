@@ -28,14 +28,12 @@ const Footer: React.FC = () => {
 
           {/* Contact */}
           <div>
-            <h2 className="text-xl font-bold text-primary mb-4">
-              Get in Touch
-            </h2>
+            <h2 className="text-xl font-bold text-white mb-4">Get in Touch</h2>
             <ul className="space-y-3">
               <li className="flex items-center gap-3">
                 <MailIcon className="w-5 h-5 text-primary" />
                 <a
-                  href="mailto:contact@codesell.academy"
+                  href="mailto:codesellacademy@gmail.com"
                   className="hover:text-primary transition-colors"
                 >
                   codesellacademy <br />
@@ -45,7 +43,7 @@ const Footer: React.FC = () => {
               <li className="flex items-center gap-3">
                 <PhoneIcon className="w-5 h-5 text-primary" />
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+8801876675145"
                   className="hover:text-primary transition-colors"
                 >
                   +880 1876675145
