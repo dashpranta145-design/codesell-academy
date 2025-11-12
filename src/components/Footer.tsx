@@ -32,22 +32,12 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-3">
                 <MailIcon className="w-5 h-5 text-primary" />
-                <a
-                  href="mailto:codesellacademy@gmail.com"
-                  className="hover:text-primary transition-colors"
-                >
-                  codesellacademy <br />
-                  @gmail.com
-                </a>
+                codesellacademy <br />
+                @gmail.com
               </li>
               <li className="flex items-center gap-3">
                 <PhoneIcon className="w-5 h-5 text-primary" />
-                <a
-                  href="tel:+8801876675145"
-                  className="hover:text-primary transition-colors"
-                >
-                  +880 1876675145
-                </a>
+                +880 1876675145
               </li>
               <li className="flex items-center gap-3">
                 <LocationMarkerIcon className="w-5 h-5 text-primary" />
