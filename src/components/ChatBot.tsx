@@ -1,11 +1,11 @@
 // src/components/Chatbot.tsx
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 type Msg = { sender: "user" | "bot"; text: string };
 
-const FRONTEND_SECRET = import.meta.env.VITE_FRONTEND_SECRET || "";
+// const FRONTEND_SECRET = import.meta.env.VITE_FRONTEND_SECRET || "";
 
-export default function Chatbot(): JSX.Element {
+export default function Chatbot(): React.ReactElement {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([
     {

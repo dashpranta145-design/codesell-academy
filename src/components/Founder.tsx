@@ -7,9 +7,9 @@ const Founder: React.FC = () => {
         <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
           <div className="relative flex-shrink-0">
             <img
-              src="src/images/Sanjit Dash.webp"
+              src="/images/Sanjit Dash.webp"
               alt="Sanjit Dash, Founder"
-              className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-primary"
+              className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-2"
             />
             <div className="absolute inset-0 rounded-full shadow-2xl shadow-primary/50 animate-pulse-slow"></div>
           </div>

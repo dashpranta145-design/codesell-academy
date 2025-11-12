@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   MailIcon,
   PhoneIcon,
@@ -15,10 +16,11 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* About */}
           <div className="md:col-span-2 lg:col-span-1">
-            <h2 className="font-serif text-xl font-bold bg-gradient-to-r from-pink-500 to-cyan-300  bg-clip-text text-transparent">
+            <h2 className="font-serif text-2xl font-bold bg-gradient-to-r from-pink-500 to-cyan-300  bg-clip-text text-transparent">
               CodeSell Academy
-            </h2>
-            <p className="text-gray-400 leading-relaxed">
+            </h2>{" "}
+            <br />
+            <p className="text-gray-200 leading-relaxed">
               We are dedicated to providing accessible, high-quality education
               in the most in-demand tech fields. Our mission is to empower
               learners to launch and advance their careers.
@@ -27,28 +29,16 @@ const Footer: React.FC = () => {
 
           {/* Contact */}
           <div>
-            <h2 className="text-xl font-bold text-primary mb-4">
-              Get in Touch
-            </h2>
+            <h2 className="text-xl font-bold text-white mb-4">Get in Touch</h2>
             <ul className="space-y-3">
               <li className="flex items-center gap-3">
                 <MailIcon className="w-5 h-5 text-primary" />
-                <a
-                  href="mailto:contact@codesell.academy"
-                  className="hover:text-primary transition-colors"
-                >
-                  codesellacademy <br />
-                  @gmail.com
-                </a>
+                codesellacademy <br />
+                @gmail.com
               </li>
               <li className="flex items-center gap-3">
                 <PhoneIcon className="w-5 h-5 text-primary" />
-                <a
-                  href="tel:+1234567890"
-                  className="hover:text-primary transition-colors"
-                >
-                  +880 1876675145
-                </a>
+                +880 1876675145
               </li>
               <li className="flex items-center gap-3">
                 <LocationMarkerIcon className="w-5 h-5 text-primary" />
@@ -59,46 +49,46 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h2 className="text-xl font-bold text-primary mb-4">Quick Links</h2>
+            <h2 className="text-xl font-bold text-white mb-4">Quick Links</h2>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="/Courses"
-                  className="hover:text-primary transition-colors"
-                >
-                  Courses
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/team"
-                  className="hover:text-primary transition-colors"
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/contact"
-                  className="hover:text-primary transition-colors"
-                >
-                  Contact
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/blog/coding"
+                <Link
+                  to="blog/coding"
                   className="hover:text-primary transition-colors"
                 >
                   Blog
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/Courses"
+                  className="hover:text-primary transition-colors"
+                >
+                  Courses
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/team"
+                  className="hover:text-primary transition-colors"
+                >
+                  About US
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact"
+                  className="hover:text-primary transition-colors"
+                >
+                  Contact
+                </Link>
               </li>
             </ul>
           </div>
 
           {/* Social */}
           <div>
-            <h2 className="text-xl font-bold text-primary mb-4">
+            <h2 className="text-xl font-bold text-white mb-4">
               Connect With Us
             </h2>
             <div className="flex items-center gap-4">

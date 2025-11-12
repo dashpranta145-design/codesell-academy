@@ -11,22 +11,22 @@ const teamData: TeamMember[] = [
   {
     name: "Sweety Reza",
     role: "Co-Ordinator & Speaking Trainer",
-    image: "src/images/Sweety.png",
+    image: "/images/Sweety.png",
   },
   {
     name: "Sajib Das Rinku",
     role: "Lead Course Designer",
-    image: "src/images/sajib.jpg",
+    image: "/images/sajib.jpg",
   },
   {
     name: "Anik Das",
     role: "Mentor of Web-development",
-    image: "src/images/Anik-Das.png",
+    image: "/images/Anik-Das.png",
   },
   {
     name: "Mst. Babli",
     role: "Trainer of Digital Marketing",
-    image: "src/images/Babli.png",
+    image: "/images/Babli.png",
   },
 ];
 

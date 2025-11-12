@@ -114,7 +114,7 @@ const ContactPage: React.FC = () => {
                       <p className="text-gray-300 text-base leading-relaxed">
                         Bhairab Bazar, Bhairab, Kishoreganj
                         <br />
-                        Dhaka Division, Bangladesh
+                        Dhaka, Bangladesh
                       </p>
                     </div>
                   </div>
