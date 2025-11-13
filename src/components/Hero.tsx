@@ -437,7 +437,7 @@ const Hero = () => {
                   className="group px-8 py-4 bg-slate-800/50 backdrop-blur-sm border-2 border-blue-400/30 rounded-full font-semibold text-lg text-blue-200 hover:bg-slate-800/70 hover:border-blue-400/50 transition-all duration-300"
                 >
                   <span className="flex items-center justify-center gap-2">
-                    <Link to="/Coding">Learn More</Link>
+                    <Link to="/coding">Learn More</Link>
                     <svg
                       className="w-5 h-5"
                       fill="none"
