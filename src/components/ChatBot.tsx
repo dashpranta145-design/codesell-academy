@@ -34,7 +34,7 @@ export default function Chatbot(): React.ReactElement {
     setSending(true);
 
     try {
-      const res = await fetch("http://localhost:5000/chat", {
+      const res = await fetch("https://codesell-academy-backend.onrender.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
