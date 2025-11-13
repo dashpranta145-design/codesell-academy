@@ -43,7 +43,7 @@ export default function Chatbot(): React.ReactElement {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "x-frontend-secret": "WE_ARE_10_262025",
+            // "x-frontend-secret": "WE_ARE_10_262025",
           },
           body: JSON.stringify({ message: text }),
           signal: controller.signal,
