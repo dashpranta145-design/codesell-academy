@@ -108,7 +108,7 @@ export default function Chatbot(): React.ReactElement {
 
       {/* Chat window */}
       {open && (
-        <div className="fixed z-[99998] right-20 bottom-10 w-[360px] h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden chat-window">
+        <div className="fixed z-[99998] right-20 bottom-10 w-[360px] h-[400px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden chat-window">
           {/* header */}
           <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-indigo-600 to-pink-500 text-white">
             <div className="flex items-center gap-3">
