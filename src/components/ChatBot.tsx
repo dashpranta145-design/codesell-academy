@@ -38,7 +38,7 @@ export default function Chatbot(): React.ReactElement {
       const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
 
       const res = await fetch(
-        "https://codesell-academy-backend.onrender.com/chat",
+        "https://codesell-academy-backend1.onrender.com/chat",
         {
           method: "POST",
           headers: {
