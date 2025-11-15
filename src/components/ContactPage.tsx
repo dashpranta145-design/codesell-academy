@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "./Header";
-import Footer from "./Footer";
+
 import FloatingBackground from "./FloatingBackground";
 import { MailIcon, PhoneIcon, LocationMarkerIcon } from "./Icons/Icons";
 
