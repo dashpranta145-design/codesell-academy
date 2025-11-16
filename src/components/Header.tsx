@@ -69,7 +69,7 @@ const Header: React.FC = () => {
         <div className="flex items-center gap-4">
           <div className="w-16 h-16 rounded-full border-2 border-primary flex items-center justify-center">
             <img
-              src="/images/Logo.png"
+              src="/images/CodeSell Logo.png"
               alt="CodeSell Academy Logo"
               className="rounded-full w-full h-full object-cover"
             />
