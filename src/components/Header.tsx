@@ -71,7 +71,7 @@ const Header: React.FC = () => {
             <img
               src="/images/CodeSell Logo.png"
               alt="CodeSell Academy Logo"
-              className="rounded-full w-full h-full object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
           <div className="hidden sm:block">
