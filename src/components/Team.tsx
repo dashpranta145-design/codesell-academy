@@ -25,7 +25,7 @@ const teamData: TeamMember[] = [
   },
   {
     name: "Mst. Babli",
-    role: "Trainer of Digital Marketing",
+    role: " Lead Trainer of Digital Marketing",
     image: "/images/Babli.png",
   },
 ];
