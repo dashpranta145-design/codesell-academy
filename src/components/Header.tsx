@@ -67,11 +67,11 @@ const Header: React.FC = () => {
     >
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center gap-4">
-          <div className="w-16 h-16 rounded-full border-2 border-primary flex items-center justify-center">
+          <div className="w-16 h-16 flex items-center justify-center ml-10">
             <img
               src="/images/CodeSell Logo.png"
               alt="CodeSell Academy Logo"
-              className="w-full h-full object-cover"
+              className="rounded-full h-full object-cover"
             />
           </div>
           <div className="hidden sm:block">
