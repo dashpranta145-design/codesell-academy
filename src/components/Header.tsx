@@ -75,7 +75,7 @@ const Header: React.FC = () => {
             />
           </div>
           <div className="hidden sm:block">
-            <span className="font-serif text-3xl font-bold bg-gradient-to-r from-cyan-300 to-pink-500 bg-clip-text text-transparent">
+            <span className="font-serif text-3xl font-bold bg-gradient-to-r from-pink-500 to-cyan-300  bg-clip-text text-transparent">
               CodeSell Academy
             </span>
           </div>
