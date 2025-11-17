@@ -1,18 +1,33 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MenuIcon, XIcon, ChevronDownIcon } from "./Icons/Icons";
 
 interface NavLink {
   name: string;
   href: string;
+  icon?: React.ReactNode;
   dropdown?: NavLink[];
 }
 
+// Import icons (you'll need to add these to your Icons component)
+// Assuming you have these icons in your Icons component
+import {
+  HomeIcon,
+  BookOpenIcon,
+  AcademicCapIcon,
+  ChatBubbleLeftRightIcon,
+} from "./Icons/Icons";
+
 const navLinks: NavLink[] = [
-  { name: "Home", href: "/" },
+  {
+    name: "Home",
+    href: "/",
+    icon: <HomeIcon className="w-5 h-5" />,
+  },
   {
     name: "Blog",
     href: "/blog/coding",
+    icon: <BookOpenIcon className="w-5 h-5" />,
     dropdown: [
       { name: "Understanding Code", href: "/blog/coding" },
       { name: "Digital Marketing Guide", href: "/blog/digital-marketing" },
@@ -22,6 +37,7 @@ const navLinks: NavLink[] = [
   {
     name: "Course",
     href: "/courses",
+    icon: <AcademicCapIcon className="w-5 h-5" />,
     dropdown: [
       { name: "Web Development", href: "/courses" },
       { name: "Digital Marketing", href: "/courses" },
@@ -29,13 +45,18 @@ const navLinks: NavLink[] = [
       { name: "Spoken", href: "/courses" },
     ],
   },
-  { name: "Contact", href: "/contact" },
+  {
+    name: "Contact",
+    href: "/contact",
+    icon: <ChatBubbleLeftRightIcon className="w-5 h-5" />,
+  },
 ];
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const headerRef = useRef<HTMLElement>(null);
+  const location = useLocation();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -60,6 +81,24 @@ const Header: React.FC = () => {
     setOpenDropdown(openDropdown === name ? null : name);
   };
 
+  // Check if a link is active
+  const isLinkActive = (href: string, dropdown?: NavLink[]) => {
+    if (dropdown) {
+      return dropdown.some((item) => location.pathname === item.href);
+    }
+    return location.pathname === href;
+  };
+
+  // Check if a dropdown parent should be active
+  const isDropdownParentActive = (href: string, dropdown?: NavLink[]) => {
+    if (dropdown) {
+      return dropdown.some((item) =>
+        location.pathname.startsWith(item.href.split("/").slice(0, 3).join("/"))
+      );
+    }
+    return location.pathname.startsWith(href);
+  };
+
   return (
     <header
       ref={headerRef}
@@ -75,41 +114,67 @@ const Header: React.FC = () => {
             />
           </div>
           <div className="hidden sm:block">
-            <span className="font-serif text-3xl font-bold bg-gradient-to-r from-violet-500 to-pink-300  bg-clip-text text-transparent">
+            <span className="font-serif text-3xl font-bold bg-gradient-to-r from-violet-500 to-pink-300 bg-clip-text text-transparent">
               CodeSell Academy
             </span>
           </div>
         </div>
 
+        {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <div key={link.name} className="relative group/dropdown">
-              <Link
-                to={link.href}
-                className="flex items-center gap-1 text-lg font-medium hover:text-primary transition-colors duration-300 py-2"
-              >
-                {link.name}
-              </Link>
+          {navLinks.map((link) => {
+            const isActive = isLinkActive(link.href, link.dropdown);
+            const isParentActive = isDropdownParentActive(
+              link.href,
+              link.dropdown
+            );
 
-              {link.dropdown && (
-                <div className="absolute top-full left-0 w-56 pt-2 invisible opacity-0 group-hover/dropdown:visible group-hover/dropdown:opacity-100 transition-all duration-200">
-                  <div className="bg-gray-900/95 backdrop-blur-md border border-primary/20 rounded-lg shadow-lg overflow-hidden">
-                    {link.dropdown.map((item) => (
-                      <Link
-                        key={item.name}
-                        to={item.href}
-                        className="block px-4 py-3 text-white hover:bg-primary/20 transition-colors duration-200"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+            return (
+              <div key={link.name} className="relative group/dropdown">
+                <Link
+                  to={link.href}
+                  className={`flex items-center gap-2 text-lg font-medium transition-all duration-300 py-2 px-3 rounded-lg ${
+                    isActive || isParentActive
+                      ? "text-white bg-gradient-to-r from-violet-600 to-pink-400 shadow-lg shadow-purple-500/30"
+                      : "text-gray-300 hover:text-white hover:bg-white/10"
+                  }`}
+                >
+                  {link.icon}
+                  {link.name}
+                  {link.dropdown && (
+                    <ChevronDownIcon className="w-4 h-4 transition-transform group-hover/dropdown:rotate-180" />
+                  )}
+                </Link>
+
+                {link.dropdown && (
+                  <div className="absolute top-full left-0 w-56 pt-2 invisible opacity-0 group-hover/dropdown:visible group-hover/dropdown:opacity-100 transition-all duration-200 z-50">
+                    <div className="bg-gray-900/95 backdrop-blur-md border border-primary/20 rounded-lg shadow-lg overflow-hidden">
+                      {link.dropdown.map((item) => {
+                        const isDropdownItemActive =
+                          location.pathname === item.href;
+                        return (
+                          <Link
+                            key={item.name}
+                            to={item.href}
+                            className={`block px-4 py-3 transition-colors duration-200 ${
+                              isDropdownItemActive
+                                ? "bg-violet-600/30 text-white border-l-2 border-violet-400"
+                                : "text-gray-300 hover:bg-primary/20 hover:text-white"
+                            }`}
+                          >
+                            {item.name}
+                          </Link>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
-          ))}
+                )}
+              </div>
+            );
+          })}
         </nav>
 
+        {/* Mobile Menu Button */}
         <div className="lg:hidden">
           <button onClick={toggleMobileMenu} aria-label="Toggle menu">
             {isMobileMenuOpen ? (
@@ -121,6 +186,7 @@ const Header: React.FC = () => {
         </div>
       </div>
 
+      {/* Mobile Navigation */}
       <nav
         className={`lg:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-md transition-all duration-300 ease-in-out overflow-hidden ${
           isMobileMenuOpen
@@ -129,46 +195,72 @@ const Header: React.FC = () => {
         }`}
       >
         <div className="flex flex-col p-4 gap-2">
-          {navLinks.map((link) => (
-            <div key={link.name}>
-              <div className="flex justify-between items-center">
-                <Link
-                  to={link.href}
-                  className="text-lg font-medium flex-grow py-2"
-                >
-                  {link.name}
-                </Link>
+          {navLinks.map((link) => {
+            const isActive = isLinkActive(link.href, link.dropdown);
+            const isParentActive = isDropdownParentActive(
+              link.href,
+              link.dropdown
+            );
+
+            return (
+              <div key={link.name}>
+                <div className="flex justify-between items-center">
+                  <Link
+                    to={link.href}
+                    className={`flex items-center gap-3 text-lg font-medium flex-grow py-3 px-3 rounded-lg transition-all duration-200 ${
+                      isActive || isParentActive
+                        ? "text-white bg-gradient-to-r from-violet-600 to-pink-400 shadow-lg shadow-purple-500/30"
+                        : "text-gray-300 hover:text-white hover:bg-white/10"
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.icon}
+                    {link.name}
+                  </Link>
+
+                  {link.dropdown && (
+                    <button
+                      onClick={() => handleMobileDropdownToggle(link.name)}
+                      className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                    >
+                      <ChevronDownIcon
+                        className={`w-5 h-5 transform transition-transform ${
+                          openDropdown === link.name ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                  )}
+                </div>
 
                 {link.dropdown && (
-                  <button onClick={() => handleMobileDropdownToggle(link.name)}>
-                    <ChevronDownIcon
-                      className={`w-6 h-6 transform transition-transform ${
-                        openDropdown === link.name ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
+                  <div
+                    className={`pl-8 overflow-hidden transition-all duration-300 ease-in-out ${
+                      openDropdown === link.name ? "max-h-96" : "max-h-0"
+                    }`}
+                  >
+                    {link.dropdown.map((item) => {
+                      const isDropdownItemActive =
+                        location.pathname === item.href;
+                      return (
+                        <Link
+                          key={item.name}
+                          to={item.href}
+                          className={`flex items-center gap-3 py-3 px-3 rounded-lg transition-colors duration-200 ${
+                            isDropdownItemActive
+                              ? "text-white bg-violet-600/30 border-l-2 border-violet-400"
+                              : "text-gray-300 hover:text-white hover:bg-white/10"
+                          }`}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
+                      );
+                    })}
+                  </div>
                 )}
               </div>
-
-              {link.dropdown && (
-                <div
-                  className={`pl-4 overflow-hidden transition-all duration-300 ease-in-out ${
-                    openDropdown === link.name ? "max-h-96" : "max-h-0"
-                  }`}
-                >
-                  {link.dropdown.map((item) => (
-                    <Link
-                      key={item.name}
-                      to={item.href}
-                      className="block py-2 text-gray-300 hover:text-primary"
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+            );
+          })}
         </div>
       </nav>
     </header>
