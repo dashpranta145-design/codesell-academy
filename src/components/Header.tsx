@@ -87,9 +87,16 @@ const Header: React.FC = () => {
       return location.pathname === "/";
     }
 
-    // For links with dropdowns, check if any dropdown item is active
+    // For links with dropdowns, check if any dropdown item is active OR if we're on the parent route
     if (dropdown) {
-      return dropdown.some((item) => location.pathname === item.href);
+      const isDropdownItemActive = dropdown.some(
+        (item) =>
+          location.pathname === item.href ||
+          location.pathname.startsWith(item.href + "/")
+      );
+      const isParentActive =
+        location.pathname.startsWith(href + "/") || location.pathname === href;
+      return isDropdownItemActive || isParentActive;
     }
 
     // For regular links, check exact match or starts with (for nested routes)
@@ -100,7 +107,9 @@ const Header: React.FC = () => {
 
   // Check if a dropdown item is active
   const isDropdownItemActive = (href: string) => {
-    return location.pathname === href;
+    return (
+      location.pathname === href || location.pathname.startsWith(href + "/")
+    );
   };
 
   return (
