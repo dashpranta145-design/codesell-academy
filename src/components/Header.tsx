@@ -40,7 +40,7 @@ const navLinks: NavLink[] = [
     dropdown: [
       { name: "Web Development", href: "/courses?course=frontend" },
       { name: "Digital Marketing", href: "/courses?course=digital-marketing" },
-      { name: "Data Science", href: "/courses?course=dsa-python" },
+      { name: "DSA", href: "/courses?course=dsa-python" },
       { name: "Spoken English", href: "/courses?course=spoken" },
     ],
   },
