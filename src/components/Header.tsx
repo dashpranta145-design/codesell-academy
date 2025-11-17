@@ -38,11 +38,10 @@ const navLinks: NavLink[] = [
     href: "/courses",
     icon: <AcademicCapIcon className="w-5 h-5" />,
     dropdown: [
-      { name: "All Courses", href: "/courses" },
-      { name: "Web Development", href: "/courses/web-development" },
-      { name: "Digital Marketing", href: "/courses/digital-marketing" },
-      { name: "Data Science", href: "/courses/data-science" },
-      { name: "Spoken English", href: "/courses/spoken-english" },
+      { name: "Web Development", href: "/courses" },
+      { name: "Digital Marketing", href: "/courses" },
+      { name: "Data Science", href: "/courses" },
+      { name: "Spoken", href: "/courses" },
     ],
   },
   {
