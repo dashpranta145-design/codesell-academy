@@ -1,7 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Header from "./Header";
-import { Link } from "react-router-dom";
-
+import { Link, useLocation } from "react-router-dom";
 import FloatingBackground from "./FloatingBackground";
 
 interface Course {
@@ -263,15 +262,45 @@ const CourseDetail: React.FC = () => {
   const [activeTab, setActiveTab] = useState<
     "description" | "modules" | "duration" | "fee"
   >("description");
-
   const contentRef = useRef<HTMLDivElement | null>(null);
+  const location = useLocation();
 
   const currentCourse = courses.find((c) => c.id === selectedCourse);
   const currentContent = courseDetails[selectedCourse];
 
+  // Function to get course ID from URL parameters
+  const getCourseFromURL = () => {
+    const params = new URLSearchParams(location.search);
+    return params.get("course");
+  };
+
+  // Handle URL parameters on component mount and URL changes
+  useEffect(() => {
+    const courseFromURL = getCourseFromURL();
+    if (
+      courseFromURL &&
+      courses.some((course) => course.id === courseFromURL)
+    ) {
+      setSelectedCourse(courseFromURL);
+      setActiveTab("description");
+
+      // Scroll to description section after a short delay
+      setTimeout(() => {
+        contentRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 500);
+    }
+  }, [location.search]);
+
   const handleCourseSelect = (id: string) => {
     setSelectedCourse(id);
     setActiveTab("description");
+
+    // Update URL without page reload
+    const newUrl = `${window.location.pathname}?course=${id}`;
+    window.history.pushState({}, "", newUrl);
 
     // Smooth scroll to the detail section
     setTimeout(() => {
