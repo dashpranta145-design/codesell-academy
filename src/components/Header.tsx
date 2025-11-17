@@ -9,8 +9,7 @@ interface NavLink {
   dropdown?: NavLink[];
 }
 
-// Import icons (you'll need to add these to your Icons component)
-// Assuming you have these icons in your Icons component
+// Import icons
 import {
   HomeIcon,
   BookOpenIcon,
@@ -39,10 +38,10 @@ const navLinks: NavLink[] = [
     href: "/courses",
     icon: <AcademicCapIcon className="w-5 h-5" />,
     dropdown: [
-      { name: "Web Development", href: "/courses" },
-      { name: "Digital Marketing", href: "/courses" },
-      { name: "Data Science", href: "/courses" },
-      { name: "Spoken", href: "/courses" },
+      { name: "Web Development", href: "/courses/web-development" },
+      { name: "Digital Marketing", href: "/courses/digital-marketing" },
+      { name: "Data Science", href: "/courses/data-science" },
+      { name: "Spoken", href: "/courses/spoken" },
     ],
   },
   {
@@ -81,22 +80,27 @@ const Header: React.FC = () => {
     setOpenDropdown(openDropdown === name ? null : name);
   };
 
-  // Check if a link is active
+  // Check if a top-level link is active
   const isLinkActive = (href: string, dropdown?: NavLink[]) => {
+    // For home page - only active when exactly "/"
+    if (href === "/") {
+      return location.pathname === "/";
+    }
+
+    // For links with dropdowns, check if any dropdown item is active
     if (dropdown) {
       return dropdown.some((item) => location.pathname === item.href);
     }
-    return location.pathname === href;
+
+    // For regular links, check exact match or starts with (for nested routes)
+    return (
+      location.pathname === href || location.pathname.startsWith(href + "/")
+    );
   };
 
-  // Check if a dropdown parent should be active
-  const isDropdownParentActive = (href: string, dropdown?: NavLink[]) => {
-    if (dropdown) {
-      return dropdown.some((item) =>
-        location.pathname.startsWith(item.href.split("/").slice(0, 3).join("/"))
-      );
-    }
-    return location.pathname.startsWith(href);
+  // Check if a dropdown item is active
+  const isDropdownItemActive = (href: string) => {
+    return location.pathname === href;
   };
 
   return (
@@ -124,17 +128,13 @@ const Header: React.FC = () => {
         <nav className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => {
             const isActive = isLinkActive(link.href, link.dropdown);
-            const isParentActive = isDropdownParentActive(
-              link.href,
-              link.dropdown
-            );
 
             return (
               <div key={link.name} className="relative group/dropdown">
                 <Link
                   to={link.href}
                   className={`flex items-center gap-2 text-lg font-medium transition-all duration-300 py-2 px-3 rounded-lg ${
-                    isActive || isParentActive
+                    isActive
                       ? "text-white bg-gradient-to-r from-violet-600 to-pink-400 shadow-lg shadow-purple-500/30"
                       : "text-gray-300 hover:text-white hover:bg-white/10"
                   }`}
@@ -150,14 +150,13 @@ const Header: React.FC = () => {
                   <div className="absolute top-full left-0 w-56 pt-2 invisible opacity-0 group-hover/dropdown:visible group-hover/dropdown:opacity-100 transition-all duration-200 z-50">
                     <div className="bg-gray-900/95 backdrop-blur-md border border-primary/20 rounded-lg shadow-lg overflow-hidden">
                       {link.dropdown.map((item) => {
-                        const isDropdownItemActive =
-                          location.pathname === item.href;
+                        const isItemActive = isDropdownItemActive(item.href);
                         return (
                           <Link
                             key={item.name}
                             to={item.href}
                             className={`block px-4 py-3 transition-colors duration-200 ${
-                              isDropdownItemActive
+                              isItemActive
                                 ? "bg-violet-600/30 text-white border-l-2 border-violet-400"
                                 : "text-gray-300 hover:bg-primary/20 hover:text-white"
                             }`}
@@ -197,10 +196,6 @@ const Header: React.FC = () => {
         <div className="flex flex-col p-4 gap-2">
           {navLinks.map((link) => {
             const isActive = isLinkActive(link.href, link.dropdown);
-            const isParentActive = isDropdownParentActive(
-              link.href,
-              link.dropdown
-            );
 
             return (
               <div key={link.name}>
@@ -208,7 +203,7 @@ const Header: React.FC = () => {
                   <Link
                     to={link.href}
                     className={`flex items-center gap-3 text-lg font-medium flex-grow py-3 px-3 rounded-lg transition-all duration-200 ${
-                      isActive || isParentActive
+                      isActive
                         ? "text-white bg-gradient-to-r from-violet-600 to-pink-400 shadow-lg shadow-purple-500/30"
                         : "text-gray-300 hover:text-white hover:bg-white/10"
                     }`}
@@ -239,14 +234,13 @@ const Header: React.FC = () => {
                     }`}
                   >
                     {link.dropdown.map((item) => {
-                      const isDropdownItemActive =
-                        location.pathname === item.href;
+                      const isItemActive = isDropdownItemActive(item.href);
                       return (
                         <Link
                           key={item.name}
                           to={item.href}
                           className={`flex items-center gap-3 py-3 px-3 rounded-lg transition-colors duration-200 ${
-                            isDropdownItemActive
+                            isItemActive
                               ? "text-white bg-violet-600/30 border-l-2 border-violet-400"
                               : "text-gray-300 hover:text-white hover:bg-white/10"
                           }`}
