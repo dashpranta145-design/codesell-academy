@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "./Header";
-
+import { Link, useNavigate } from "react-router-dom";
 import FloatingBackground from "./FloatingBackground";
 import { MailIcon, PhoneIcon, LocationMarkerIcon } from "./Icons/Icons";
 
@@ -16,6 +16,8 @@ const ContactPage: React.FC = () => {
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
+
+  const navigate = useNavigate();
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -39,6 +41,23 @@ const ContactPage: React.FC = () => {
       // Reset success message after 5 seconds
       setTimeout(() => setSubmitStatus("idle"), 5000);
     }, 1500);
+  };
+
+  // Function to navigate to FAQ section on homepage
+  const handleFAQClick = () => {
+    // Navigate to home page first
+    navigate("/");
+
+    // Wait for navigation to complete, then scroll to FAQ section
+    setTimeout(() => {
+      const faqSection = document.getElementById("faq-section");
+      if (faqSection) {
+        faqSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 100);
   };
 
   return (
@@ -415,9 +434,9 @@ const ContactPage: React.FC = () => {
             <p className="text-gray-300 mb-3 sm:mb-4 text-base sm:text-lg">
               Have questions before reaching out?
             </p>
-            <a
-              href="/#faq"
-              className="inline-flex items-center gap-2 text-cyan-400 hover:text-pink-400 font-semibold transition-colors text-base sm:text-lg"
+            <button
+              onClick={handleFAQClick}
+              className="inline-flex items-center gap-2 text-cyan-400 hover:text-pink-400 font-semibold transition-colors text-base sm:text-lg cursor-pointer"
             >
               Check our FAQ section
               <svg
@@ -433,7 +452,7 @@ const ContactPage: React.FC = () => {
                   d="M9 5l7 7-7 7"
                 />
               </svg>
-            </a>
+            </button>
           </div>
         </div>
       </main>
