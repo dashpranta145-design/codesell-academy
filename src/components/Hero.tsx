@@ -340,7 +340,7 @@ const Hero = () => {
               className="flex items-center gap-3 sm:gap-4 md:gap-6 px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 bg-slate-800/40 backdrop-blur-xl rounded-xl sm:rounded-2xl md:rounded-3xl border border-blue-500/10 shadow-2xl w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto"
               style={{
                 animation:
-                  "rotateIn 10s ease-out, float 4s ease-in-out infinite 1s",
+                  "rotateIn 6s ease-out, float 4s ease-in-out infinite 1s",
               }}
             >
               {/* Neuron on the LEFT side */}
@@ -509,7 +509,7 @@ const Hero = () => {
                 <div
                   className="relative rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden shadow-2xl shadow-blue-500/20 border border-blue-500/20 bg-slate-800/50 backdrop-blur-sm p-3 sm:p-4 md:p-6"
                   style={{
-                    animation: "rotateIn 10s ease-out",
+                    animation: "rotateIn 6s ease-out",
                   }}
                 >
                   <div className="absolute top-0 right-0 w-16 h-16 sm:w-32 sm:h-32 bg-blue-500/10 rounded-full blur-lg sm:blur-xl"></div>
