@@ -75,7 +75,7 @@ const teamMembers: TeamMember[] = [
   {
     id: 5,
     name: "Samiya Rahman Khadiza",
-    role: "Trainer of Front-End Develeopment",
+    role: "Trainer of Front-End Development",
     image: "/images/Khadiza.png",
     bio: "Expertise in creating industry-relevant, hands-on learning programs that prepare students for real-world challenges.",
     expertise: [
@@ -225,7 +225,7 @@ const TeamPage: React.FC = () => {
                     </div>
                     <div className="bg-primary/10 border border-primary/30 rounded-xl p-4 text-center">
                       <div className="text-3xl font-bold text-primary mb-2">
-                        100+
+                        50+
                       </div>
                       <div className="text-sm text-gray-400">
                         Students Mentored

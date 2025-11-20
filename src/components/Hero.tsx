@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const NeuralLogo = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -11,12 +12,14 @@ const NeuralLogo = () => {
     if (!maybeCtx) return;
     const ctx = maybeCtx;
 
-    canvas.width = 160;
-    canvas.height = 160;
+    // Make canvas responsive but with minimum size
+    const size = Math.max(100, Math.min(140, window.innerWidth * 0.2));
+    canvas.width = size;
+    canvas.height = size;
 
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
-    const radius = 55;
+    const radius = size * 0.34;
 
     class Node {
       angle: number;
@@ -33,7 +36,12 @@ const NeuralLogo = () => {
         this.angle = angle;
         this.layer = layer;
         this.radius = layer === 0 ? 0 : radius * layer;
-        this.size = layer === 0 ? 6 : layer === 1 ? 5 : 4;
+        this.size =
+          layer === 0
+            ? size * 0.0375
+            : layer === 1
+            ? size * 0.03125
+            : size * 0.025;
         this.pulsePhase = Math.random() * Math.PI * 2;
         this.pulseSpeed = 0.03 + Math.random() * 0.02;
       }
@@ -42,7 +50,8 @@ const NeuralLogo = () => {
         this.x = centerX + Math.cos(this.angle) * this.radius;
         this.y = centerY + Math.sin(this.angle) * this.radius;
         this.pulsePhase += this.pulseSpeed;
-        this.currentSize = this.size + Math.sin(this.pulsePhase) * 1.5;
+        this.currentSize =
+          this.size + Math.sin(this.pulsePhase) * (size * 0.009375);
       }
 
       draw() {
@@ -231,7 +240,7 @@ const NeuralLogo = () => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="drop-shadow-2xl" />;
+  return <canvas ref={canvasRef} className="drop-shadow-2xl w-full h-auto" />;
 };
 
 const RotatingText = () => {
@@ -252,11 +261,11 @@ const RotatingText = () => {
   }, []);
 
   return (
-    <p className="text-blue-400/80 text-base md:text-lg tracking-wider mt-3 flex items-center gap-2">
+    <p className="text-blue-400/80 text-xs sm:text-sm md:text-base tracking-wider mt-1 sm:mt-2 flex items-center gap-1 sm:gap-2 justify-center">
       <span>Here You Can</span>
-      <span className="relative inline-block h-8 md:h-9 w-24 md:w-28 overflow-hidden">
+      <span className="relative inline-block h-5 sm:h-6 md:h-7 w-14 sm:w-16 md:w-20 overflow-hidden">
         <span
-          className={`absolute inset-0 flex items-center justify-center font-bold text-xl md:text-2xl text-cyan-400 transition-all duration-1000 ease-in-out ${
+          className={`absolute inset-0 flex items-center justify-center font-bold text-sm sm:text-base md:text-lg text-cyan-400 transition-all duration-1000 ease-in-out ${
             isAnimating
               ? "translate-y-[-100%] opacity-0"
               : "translate-y-0 opacity-100"
@@ -265,7 +274,7 @@ const RotatingText = () => {
           {words[currentIndex]}
         </span>
         <span
-          className={`absolute inset-0 flex items-center justify-center font-bold text-xl md:text-2xl text-cyan-500 transition-all duration-3000 ease-in-out ${
+          className={`absolute inset-0 flex items-center justify-center font-bold text-sm sm:text-base md:text-lg text-cyan-500 transition-all duration-3000 ease-in-out ${
             isAnimating
               ? "translate-y-0 opacity-100"
               : "translate-y-[100%] opacity-0"
@@ -303,13 +312,13 @@ const TypingEffect = () => {
   }, []);
 
   return (
-    <h1 className="text-xl md:text-2xl lg:text-4xl font-bold leading-tight min-h-[200px] md:min-h-[240px]">
+    <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold leading-tight min-h-[80px] sm:min-h-[100px] md:min-h-[120px] text-center lg:text-left">
       <span className="bg-gradient-to-r from-blue-200 via-cyan-200 to-blue-200 bg-clip-text text-transparent">
         {displayedText}
       </span>
       {currentIndex < fullText.length && (
         <span
-          className={`inline-block w-1 h-12 md:h-16 bg-cyan-400 ml-1 ${
+          className={`inline-block w-1 h-5 sm:h-6 md:h-8 lg:h-10 xl:h-12 bg-cyan-400 ml-1 ${
             showCursor ? "opacity-100" : "opacity-0"
           }`}
         />
@@ -321,36 +330,41 @@ const TypingEffect = () => {
 const Hero = () => {
   return (
     <>
-      {/* Spinning Neuron Section - Separate at Top */}
-      <section className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden border-b border-blue-500/10">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(139,169,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,169,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+      {/* Spinning Neuron Section */}
+      <section className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white pt-24 sm:pt-28 md:pt-32 pb-8 sm:pb-10 md:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden border-b border-blue-500/10">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(139,169,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,169,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px] sm:bg-[size:40px_40px] md:bg-[size:50px_50px]"></div>
 
-        <div className="container mx-auto relative z-10">
+        <div className="container mx-auto relative z-10 max-w-6xl">
           <div className="flex justify-center">
             <div
-              className="flex items-center gap-8 px-10 py-8 bg-slate-800/40 backdrop-blur-xl rounded-3xl border border-blue-500/10 shadow-2xl"
+              className="flex items-center gap-3 sm:gap-4 md:gap-6 px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 bg-slate-800/40 backdrop-blur-xl rounded-xl sm:rounded-2xl md:rounded-3xl border border-blue-500/10 shadow-2xl w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto"
               style={{
                 animation:
-                  "rotateIn 2s ease-out, float 6s ease-in-out infinite 2s",
+                  "rotateIn 3s ease-out, float 4s ease-in-out infinite 1s",
               }}
             >
-              <div className="relative">
-                <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-2xl animate-pulse"></div>
+              {/* Neuron on the LEFT side */}
+              <div className="relative shrink-0 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24">
+                <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-lg animate-pulse"></div>
                 <div
-                  className="relative"
+                  className="relative w-full h-full"
                   style={{ animation: "spin 20s linear infinite" }}
                 >
                   <NeuralLogo />
                 </div>
               </div>
-              <div className="flex flex-col">
-                <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-200 via-blue-100 to-blue-200 bg-clip-text text-transparent">
+
+              {/* Texts on the RIGHT side */}
+              <div className="flex flex-col flex-1 min-w-0 text-center sm:text-left">
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-blue-200 via-blue-100 to-blue-200 bg-clip-text text-transparent leading-tight">
                   CodeSell
                 </h2>
-                <p className="text-blue-300/80 text-lg md:text-xl tracking-[0.3em] uppercase font-light mt-1">
+                <p className="text-blue-300/80 text-xs sm:text-sm md:text-base lg:text-lg tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] uppercase font-light mt-0 sm:mt-1">
                   Academy
                 </p>
-                <RotatingText />
+                <div className="mt-1 sm:mt-2 flex justify-center sm:justify-start">
+                  <RotatingText />
+                </div>
               </div>
             </div>
           </div>
@@ -358,32 +372,38 @@ const Hero = () => {
       </section>
 
       {/* Main Hero Section */}
-      <section className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white pt-20 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen flex items-center">
+      <section className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen flex items-center">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-10 sm:top-20 left-4 sm:left-10 w-32 h-32 sm:w-60 sm:h-60 bg-blue-500/10 rounded-full blur-xl sm:blur-2xl animate-pulse"></div>
           <div
-            className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"
+            className="absolute bottom-10 sm:bottom-20 right-4 sm:right-10 w-40 h-40 sm:w-80 sm:h-80 bg-purple-500/10 rounded-full blur-xl sm:blur-2xl animate-pulse"
             style={{ animationDelay: "1s" }}
           ></div>
           <div
-            className="absolute top-1/2 left-1/2 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl animate-pulse"
+            className="absolute top-1/2 left-1/2 w-28 h-28 sm:w-56 sm:h-56 bg-cyan-500/5 rounded-full blur-xl sm:blur-2xl animate-pulse"
             style={{ animationDelay: "2s" }}
           ></div>
         </div>
 
         {/* Grid pattern overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(139,169,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,169,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(139,169,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,169,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px] sm:bg-[size:40px_40px] md:bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]"></div>
 
-        <div className="container mx-auto relative z-10">
+        <div className="container mx-auto relative z-10 max-w-6xl">
           {/* Main Hero Content */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
+            {" "}
+            {/* Changed from items-center to items-start */}
             {/* Text Content - Left Side */}
-            <div className="text-center lg:text-left space-y-0 order-2 lg:order-1 mb-20">
+            <div className="text-center lg:text-left space-y-4 sm:space-y-5 order-1">
+              {" "}
+              {/* Reduced spacing */}
               {/* Typing Effect Heading */}
               <TypingEffect />
-
-              <p className="text-lg md:text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
+              {/* Reduced gap between heading and paragraph */}
+              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 mt-2 sm:mt-3">
+                {" "}
+                {/* Added mt-2 instead of large space-y */}
                 Beginner-friendly courses in{" "}
                 <span className="text-blue-300 font-semibold">
                   Web Development
@@ -402,21 +422,21 @@ const Hero = () => {
                 </span>
                 .
                 <br />
-                <span className="text-slate-400">
+                <span className="text-slate-400 text-xs sm:text-sm">
                   Gain skills, build a portfolio, and start your tech career.
                 </span>
               </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+              {/* Buttons with reduced width and side by side */}
+              <div className="flex flex-row gap-2 sm:gap-3 justify-center lg:justify-start pt-2 sm:pt-3">
                 <a
                   href="/courses"
-                  className="group relative px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full font-semibold text-lg text-white shadow-lg shadow-blue-500/50 hover:shadow-xl hover:scale-105 transition-all duration-300 overflow-hidden"
+                  className="group relative px-4 sm:px-5 py-2 sm:py-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full font-semibold text-xs sm:text-sm text-white shadow-lg shadow-blue-500/50 hover:shadow-xl hover:scale-105 transition-all duration-300 overflow-hidden whitespace-nowrap flex-1 max-w-[140px] sm:max-w-[160px]" // Reduced width
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-400 opacity-0 group-hover:opacity-80 transition-opacity duration-300"></span>
-                  <span className="relative flex items-center justify-center gap-2">
-                    Explore Courses
+                  <span className="relative flex items-center justify-center gap-1 sm:gap-2">
+                    <Link to="/courses">Explore Courses</Link>
                     <svg
-                      className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                      className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -433,12 +453,12 @@ const Hero = () => {
 
                 <a
                   href="/about"
-                  className="group px-8 py-4 bg-slate-800/50 backdrop-blur-sm border-2 border-blue-400/30 rounded-full font-semibold text-lg text-blue-200 hover:bg-slate-800/70 hover:border-blue-400/50 transition-all duration-300"
+                  className="group px-4 sm:px-5 py-2 sm:py-3 bg-slate-800/50 backdrop-blur-sm border-2 border-blue-400/30 rounded-full font-semibold text-xs sm:text-sm text-blue-200 hover:bg-slate-800/70 hover:border-blue-400/50 transition-all duration-300 whitespace-nowrap flex-1 max-w-[120px] sm:max-w-[140px]" // Reduced width
                 >
-                  <span className="flex items-center justify-center gap-2">
-                    Learn More
+                  <span className="flex items-center justify-center gap-1 sm:gap-2">
+                    <Link to="blog/coding">Learn More</Link>
                     <svg
-                      className="w-5 h-5"
+                      className="w-3 h-3 sm:w-4 sm:h-4"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -453,43 +473,53 @@ const Hero = () => {
                   </span>
                 </a>
               </div>
-
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 pt-8 max-w-xl mx-auto lg:mx-0">
+              <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 pt-4 sm:pt-5 max-w-xl mx-auto lg:mx-0">
                 <div className="text-center lg:text-left">
-                  <div className="text-3xl font-bold text-cyan-400">50+</div>
-                  <div className="text-sm text-slate-400 mt-1">Students</div>
+                  <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-cyan-400">
+                    50+
+                  </div>
+                  <div className="text-xs sm:text-sm text-slate-400 mt-1">
+                    Students
+                  </div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className="text-3xl font-bold text-blue-400">10+</div>
-                  <div className="text-sm text-slate-400 mt-1">Courses</div>
+                  <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-blue-400">
+                    10+
+                  </div>
+                  <div className="text-xs sm:text-sm text-slate-400 mt-1">
+                    Courses
+                  </div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className="text-3xl font-bold text-purple-400">95%</div>
-                  <div className="text-sm text-slate-400 mt-1">
+                  <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-purple-400">
+                    95%
+                  </div>
+                  <div className="text-xs sm:text-sm text-slate-400 mt-1">
                     Success Rate
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Live Coding Card - Right Side with rotation */}
-            <div className="flex justify-center lg:justify-end order-1 lg:order-2">
-              <div className="relative w-full max-w-xl">
+            {/* Live Coding Card - Right Side - Moved to top */}
+            <div className="flex justify-center lg:justify-end order-2 -mt-4 sm:-mt-6 lg:-mt-8">
+              {" "}
+              {/* Negative margin to move up */}
+              <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
                 <div
-                  className="relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/20 border border-blue-500/20 bg-slate-800/50 backdrop-blur-sm p-8"
+                  className="relative rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden shadow-2xl shadow-blue-500/20 border border-blue-500/20 bg-slate-800/50 backdrop-blur-sm p-3 sm:p-4 md:p-6"
                   style={{
-                    animation: "rotateIn 2s ease-out",
+                    animation: "rotateIn 3s ease-out",
                   }}
                 >
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl"></div>
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl"></div>
+                  <div className="absolute top-0 right-0 w-16 h-16 sm:w-32 sm:h-32 bg-blue-500/10 rounded-full blur-lg sm:blur-xl"></div>
+                  <div className="absolute bottom-0 left-0 w-12 h-12 sm:w-24 sm:h-24 bg-purple-500/10 rounded-full blur-md sm:blur-lg"></div>
 
-                  <div className="relative space-y-6">
-                    <div className="flex items-center gap-4">
-                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg">
+                  <div className="relative space-y-3 sm:space-y-4 md:space-y-6">
+                    <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg shrink-0">
                         <svg
-                          className="w-8 h-8 text-white"
+                          className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -503,28 +533,30 @@ const Hero = () => {
                         </svg>
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-white">
+                        <h3 className="text-base sm:text-lg md:text-xl font-bold text-white">
                           Live Coding
                         </h3>
-                        <p className="text-slate-400">Interactive Sessions</p>
+                        <p className="text-slate-400 text-xs sm:text-sm">
+                          Interactive Sessions
+                        </p>
                       </div>
                     </div>
 
-                    <div className="h-2 bg-slate-700/50 rounded-full overflow-hidden">
+                    <div className="h-1.5 sm:h-2 bg-slate-700/50 rounded-full overflow-hidden">
                       <div className="h-full w-3/4 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full animate-pulse"></div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="p-4 rounded-xl bg-slate-900/50 border border-blue-500/10">
-                        <div className="text-2xl font-bold text-blue-400">
+                    <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4">
+                      <div className="p-2 sm:p-3 md:p-4 rounded-lg sm:rounded-xl bg-slate-900/50 border border-blue-500/10">
+                        <div className="text-lg sm:text-xl font-bold text-blue-400">
                           24/7
                         </div>
                         <div className="text-xs text-slate-400 mt-1">
                           Support
                         </div>
                       </div>
-                      <div className="p-4 rounded-xl bg-slate-900/50 border border-purple-500/10">
-                        <div className="text-2xl font-bold text-purple-400">
+                      <div className="p-2 sm:p-3 md:p-4 rounded-lg sm:rounded-xl bg-slate-900/50 border border-purple-500/10">
+                        <div className="text-lg sm:text-xl font-bold text-purple-400">
                           100%
                         </div>
                         <div className="text-xs text-slate-400 mt-1">
@@ -534,20 +566,20 @@ const Hero = () => {
                     </div>
 
                     {/* Code snippet decoration */}
-                    <div className="bg-slate-900/70 rounded-xl p-4 font-mono text-sm border border-blue-500/20">
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    <div className="bg-slate-900/70 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 font-mono text-xs sm:text-sm border border-blue-500/20">
+                      <div className="flex items-center gap-1 sm:gap-2 mb-2 sm:mb-3">
+                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-3 md:h-3 rounded-full bg-red-500"></div>
+                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-3 md:h-3 rounded-full bg-yellow-500"></div>
+                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-3 md:h-3 rounded-full bg-green-500"></div>
                       </div>
-                      <div className="space-y-2 text-slate-300">
+                      <div className="space-y-1 sm:space-y-2 text-slate-300">
                         <div>
                           <span className="text-purple-400">const</span>{" "}
                           <span className="text-blue-300">learn</span> ={" "}
                           <span className="text-yellow-300">()</span>{" "}
                           <span className="text-cyan-400">=&gt;</span> {"{"}
                         </div>
-                        <div className="pl-4">
+                        <div className="pl-3 sm:pl-4">
                           <span className="text-green-400">return</span>{" "}
                           <span className="text-orange-300">'Success'</span>;
                         </div>
@@ -557,7 +589,7 @@ const Hero = () => {
                   </div>
 
                   {/* Floating badge */}
-                  <div className="absolute -top-0 -right-4 bg-gradient-to-br from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-2xl shadow-xl shadow-cyan-500/50 font-bold animate-bounce">
+                  <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 bg-gradient-to-br from-cyan-500 to-blue-600 text-white px-2 sm:px-3 py-1 text-xs sm:text-sm font-bold rounded-lg sm:rounded-xl shadow-lg shadow-cyan-500/50 animate-bounce">
                     🎓 Free Trial
                   </div>
                 </div>
@@ -594,7 +626,7 @@ const Hero = () => {
             transform: translateY(0px);
           }
           50% {
-            transform: translateY(-20px);
+            transform: translateY(-8px);
           }
         }
       `}</style>

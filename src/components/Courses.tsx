@@ -26,7 +26,7 @@ const coursesData: Course[] = [
 ];
 
 const CourseCard: React.FC<Course> = ({ title, description, image }) => (
-  <div className="bg-gray-900 rounded-2xl overflow-hidden group transform hover:-translate-y-2 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-primary/40 border border-transparent hover:border-primary/50 w-80 max-w-full mx-4">
+  <div className="bg-gray-900 rounded-2xl overflow-hidden group transform hover:-translate-y-2 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-primary/40 border border-transparent hover:border-primary/50 w-full max-w-sm lg:max-w-xs xl:max-w-sm">
     <img
       src={image}
       alt={title}
@@ -55,12 +55,10 @@ const Courses: React.FC = () => {
           </span>
         </h2>
 
-        {/* Flexbox layout for better centering control */}
-        <div className="flex flex-wrap justify-center gap-8">
+        {/* Grid layout for proper responsive behavior */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
           {coursesData.map((course) => (
-            <div key={course.title} className="flex justify-center">
-              <CourseCard {...course} />
-            </div>
+            <CourseCard key={course.title} {...course} />
           ))}
         </div>
 

@@ -70,7 +70,7 @@ const FAQ: React.FC = () => {
   };
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
+    <section id="faq-section" className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
       <div className="container mx-auto max-w-4xl">
         <h2 className="font-serif text-4xl md:text-5xl font-bold text-center mb-12">
           <span className="bg-gradient-to-r from-pink-500 to-cyan-400 bg-clip-text text-transparent">
