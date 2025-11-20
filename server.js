@@ -33,6 +33,7 @@ app.use("/chat", limiter);
 const qaPairs = [
   {
     keywords: [
+      "hi",
       "how are you",
       "how r you",
       "how r u",
