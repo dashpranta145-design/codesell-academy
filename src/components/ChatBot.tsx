@@ -97,18 +97,34 @@ export default function Chatbot(): React.ReactElement {
   return (
     <>
       {/* Floating button */}
-      <button
-        aria-label="Open chat"
-        onClick={() => setOpen((s) => !s)}
-        className="fixed z-[99999] right-5 bottom-5 w-14 h-14 rounded-full bg-gradient-to-br from-indigo-600 to-pink-500 text-white shadow-xl flex items-center justify-center hover:scale-105 transition"
-        title="Open chat"
-      >
-        💬
-      </button>
+      {!open && (
+        <button
+          aria-label="Open chat"
+          onClick={() => setOpen(true)}
+          className="fixed z-[99999] right-4 bottom-4 
+               w-12 h-12 md:w-14 md:h-14 
+               rounded-full bg-gradient-to-br from-indigo-600 to-pink-500 
+               text-white shadow-xl flex items-center justify-center 
+               hover:scale-105 transition"
+        >
+          💬
+        </button>
+      )}
 
-      {/* Chat window */}
       {open && (
-        <div className="fixed z-[99998] right-20 bottom-10 w-[360px] h-[400px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden chat-window">
+        <div
+          className="
+      fixed z-[99998] 
+      right-5 left-2 bottom-1
+      w-auto h-[80vh] 
+      bg-white rounded-2xl shadow-2xl border border-gray-200 
+      flex flex-col overflow-hidden
+
+      md:right-20 md:bottom-10 md:left-auto
+      md:w-[360px] md:h-[420px]
+      sm:h-[200px] sm:w-[auto]
+    "
+        >
           {/* header */}
           <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-indigo-600 to-pink-500 text-white">
             <div className="flex items-center gap-3">
@@ -162,7 +178,7 @@ export default function Chatbot(): React.ReactElement {
                 }`}
               >
                 <div
-                  className={`max-w-[78%] px-4 py-2 rounded-2xl text-sm leading-relaxed ${
+                  className={`max-w-[86%] px-4 py-2 rounded-2xl text-sm leading-relaxed ${
                     m.sender === "user"
                       ? "bg-indigo-600 text-white rounded-br-none"
                       : "bg-white border border-gray-200 rounded-bl-none"
