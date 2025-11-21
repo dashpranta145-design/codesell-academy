@@ -46,7 +46,7 @@ const qaPairs = [
     answer_bn: "😊 আমি ভালো আছি! কিভাবে আপনাকে সাহায্য করতে পারি?",
   },
 
-  // ✅ ONLINE CLASS (moved up + improved Bengali keywords)
+  // ONLINE CLASS
   {
     keywords: ["online", "online class", "online classes", "virtual"],
     keywords_bn: [
@@ -65,7 +65,7 @@ const qaPairs = [
       "🖥️ হ্যাঁ! আমরা লাইভ অনলাইন ক্লাস, রেকর্ডিং, শিক্ষক সাপোর্ট এবং অ্যাসাইনমেন্টসহ ক্লাস প্রদান করি।",
   },
 
-  // ✅ Course Fee
+  // Course Fee
   {
     keywords: [
       "fee",
@@ -92,7 +92,7 @@ const qaPairs = [
       "⏰ সাধারণ সময়কাল: \n• Web Dev - ৬ মাস \n• Data Science - ৬ মাস \n• Digital Marketing - ৬ মাস \n• Computer Fundamental - ৩ মাস \n• Spoken - ৩ মাস",
   },
 
-  // ✅ Courses List (now after online block)
+  //Courses List (now after online block)
   {
     keywords: [
       "course",
