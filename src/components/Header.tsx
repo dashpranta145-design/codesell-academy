@@ -119,7 +119,7 @@ const Header: React.FC = () => {
     >
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <div className="w-16 h-16 flex items-center justify-center">
+          <div className="w-16 h-18 flex items-center justify-center">
             <img
               src="/images/CodeSell Logo.png"
               alt="CodeSell Academy Logo"
