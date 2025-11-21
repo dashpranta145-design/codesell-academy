@@ -173,7 +173,7 @@ const ContactPage: React.FC = () => {
                 </h3>
                 <div className="flex gap-3 sm:gap-4">
                   <a
-                    href="#"
+                    href="https://www.facebook.com/CodeSellContentHub"
                     className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center hover:bg-pink-500/40 hover:scale-110 transition-all border border-pink-500/30"
                     aria-label="Facebook"
                   >
@@ -187,7 +187,7 @@ const ContactPage: React.FC = () => {
                   </a>
 
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/in/codesell-academy"
                     className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center hover:bg-pink-500/40 hover:scale-110 transition-all border border-pink-500/30"
                     aria-label="LinkedIn"
                   >
@@ -200,7 +200,7 @@ const ContactPage: React.FC = () => {
                     </svg>
                   </a>
                   <a
-                    href="#"
+                    href="https://x.com/CodesellAcademy"
                     className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center hover:bg-pink-500/40 hover:scale-110 transition-all border border-pink-500/30"
                     aria-label="Twitter"
                   >

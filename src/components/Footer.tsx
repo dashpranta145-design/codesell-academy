@@ -93,21 +93,21 @@ const Footer: React.FC = () => {
             </h2>
             <div className="flex items-center gap-4">
               <a
-                href="#"
+                href="https://www.facebook.com/CodeSellContentHub"
                 aria-label="Facebook"
                 className="text-gray-400 hover:text-primary transition-transform hover:scale-110"
               >
                 <FacebookIcon className="w-7 h-7" />
               </a>
               <a
-                href="#"
+                href="https://x.com/CodesellAcademy"
                 aria-label="twiter"
                 className="text-gray-400 hover:text-primary transition-transform hover:scale-110"
               >
                 <TwitterIcon className="w-7 h-7" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/codesell-academy"
                 aria-label="LinkedIn"
                 className="text-gray-400 hover:text-primary transition-transform hover:scale-110"
               >
