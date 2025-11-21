@@ -122,16 +122,16 @@ export default function Chatbot(): React.ReactElement {
 
       md:right-20 md:bottom-10 md:left-auto
       md:w-[360px] md:h-[420px]
-      sm:h-[200px] sm:w-[auto]
+      sm:h-[200px] sm:w-[200px]
     "
         >
           {/* header */}
           <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-indigo-600 to-pink-500 text-white">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <img
                 src="/images/CodeSell Logo.png"
                 alt="logo"
-                className="w-8 h-8 rounded-full"
+                className="w-10 h-10 rounded-full"
               />
               <div>
                 <div className="font-semibold text-sm">CodeSell Academy</div>
