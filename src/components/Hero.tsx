@@ -340,7 +340,7 @@ const Hero = () => {
               className="flex items-center gap-3 sm:gap-4 md:gap-6 px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 bg-slate-800/40 backdrop-blur-xl rounded-xl sm:rounded-2xl md:rounded-3xl border border-blue-500/10 shadow-2xl w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto"
               style={{
                 animation:
-                  "rotateIn 3s ease-out, float 4s ease-in-out infinite 1s",
+                  "smoothSlideIn 1.5s ease-out, float 4s ease-in-out infinite 1s",
               }}
             >
               {/* Neuron on the LEFT side */}
@@ -392,18 +392,13 @@ const Hero = () => {
         <div className="container mx-auto relative z-10 max-w-6xl">
           {/* Main Hero Content */}
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
-            {" "}
-            {/* Changed from items-center to items-start */}
             {/* Text Content - Left Side */}
             <div className="text-center lg:text-left space-y-4 sm:space-y-5 order-1">
-              {" "}
-              {/* Reduced spacing */}
               {/* Typing Effect Heading */}
               <TypingEffect />
+
               {/* Reduced gap between heading and paragraph */}
               <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 mt-2 sm:mt-3">
-                {" "}
-                {/* Added mt-2 instead of large space-y */}
                 Beginner-friendly courses in{" "}
                 <span className="text-blue-300 font-semibold">
                   Web Development
@@ -426,11 +421,12 @@ const Hero = () => {
                   Gain skills, build a portfolio, and start your tech career.
                 </span>
               </p>
+
               {/* Buttons with reduced width and side by side */}
               <div className="flex flex-row gap-2 sm:gap-3 justify-center lg:justify-start pt-2 sm:pt-3">
                 <a
                   href="/courses"
-                  className="group relative px-4 sm:px-5 py-2 sm:py-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full font-semibold text-xs sm:text-sm text-white shadow-lg shadow-blue-500/50 hover:shadow-xl hover:scale-105 transition-all duration-300 overflow-hidden whitespace-nowrap flex-1 max-w-[140px] sm:max-w-[160px]" // Reduced width
+                  className="group relative px-4 sm:px-5 py-2 sm:py-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full font-semibold text-xs sm:text-sm text-white shadow-lg shadow-blue-500/50 hover:shadow-xl hover:scale-105 transition-all duration-300 overflow-hidden whitespace-nowrap flex-1 max-w-[140px] sm:max-w-[160px]"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-400 opacity-0 group-hover:opacity-80 transition-opacity duration-300"></span>
                   <span className="relative flex items-center justify-center gap-1 sm:gap-2">
@@ -453,7 +449,7 @@ const Hero = () => {
 
                 <a
                   href="/about"
-                  className="group px-4 sm:px-5 py-2 sm:py-3 bg-slate-800/50 backdrop-blur-sm border-2 border-blue-400/30 rounded-full font-semibold text-xs sm:text-sm text-blue-200 hover:bg-slate-800/70 hover:border-blue-400/50 transition-all duration-300 whitespace-nowrap flex-1 max-w-[120px] sm:max-w-[140px]" // Reduced width
+                  className="group px-4 sm:px-5 py-2 sm:py-3 bg-slate-800/50 backdrop-blur-sm border-2 border-blue-400/30 rounded-full font-semibold text-xs sm:text-sm text-blue-200 hover:bg-slate-800/70 hover:border-blue-400/50 transition-all duration-300 whitespace-nowrap flex-1 max-w-[120px] sm:max-w-[140px]"
                 >
                   <span className="flex items-center justify-center gap-1 sm:gap-2">
                     <Link to="blog/coding">Learn More</Link>
@@ -473,6 +469,7 @@ const Hero = () => {
                   </span>
                 </a>
               </div>
+
               {/* Stats */}
               <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 pt-4 sm:pt-5 max-w-xl mx-auto lg:mx-0">
                 <div className="text-center lg:text-left">
@@ -501,15 +498,14 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-            {/* Live Coding Card - Right Side - Moved to top */}
+
+            {/* Live Coding Card - Right Side - Smaller width and smoother animation */}
             <div className="flex justify-center lg:justify-end order-2 -mt-4 sm:-mt-6 lg:-mt-8">
-              {" "}
-              {/* Negative margin to move up */}
-              <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
+              <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md">
                 <div
                   className="relative rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden shadow-2xl shadow-blue-500/20 border border-blue-500/20 bg-slate-800/50 backdrop-blur-sm p-3 sm:p-4 md:p-6"
                   style={{
-                    animation: "rotateIn 3s ease-out",
+                    animation: "smoothSlideIn 1.5s ease-out 0.3s both",
                   }}
                 >
                   <div className="absolute top-0 right-0 w-16 h-16 sm:w-32 sm:h-32 bg-blue-500/10 rounded-full blur-lg sm:blur-xl"></div>
@@ -600,14 +596,14 @@ const Hero = () => {
       </section>
 
       <style>{`
-        @keyframes rotateIn {
+        @keyframes smoothSlideIn {
           0% {
             opacity: 0;
-            transform: translateX(-100%) rotate(-180deg) scale(0.5);
+            transform: translateX(30px) scale(0.95);
           }
           100% {
             opacity: 1;
-            transform: translateX(0) rotate(0deg) scale(1);
+            transform: translateX(0) scale(1);
           }
         }
 
