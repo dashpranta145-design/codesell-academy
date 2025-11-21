@@ -340,7 +340,7 @@ const Hero = () => {
               className="flex items-center gap-3 sm:gap-4 md:gap-6 px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 bg-slate-800/40 backdrop-blur-xl rounded-xl sm:rounded-2xl md:rounded-3xl border border-blue-500/10 shadow-2xl w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto"
               style={{
                 animation:
-                  "smoothSlideIn 1.5s ease-out, float 4s ease-in-out infinite 1s",
+                  "rotateIn 1.5s cubic-bezier(0.4, 0, 0.2, 1), float 4s ease-in-out infinite 1s",
               }}
             >
               {/* Neuron on the LEFT side */}
@@ -499,13 +499,14 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Live Coding Card - Right Side - Smaller width and smoother animation */}
+            {/* Live Coding Card - Right Side - Smaller width and smoother original animation */}
             <div className="flex justify-center lg:justify-end order-2 -mt-4 sm:-mt-6 lg:-mt-8">
               <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md">
                 <div
                   className="relative rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden shadow-2xl shadow-blue-500/20 border border-blue-500/20 bg-slate-800/50 backdrop-blur-sm p-3 sm:p-4 md:p-6"
                   style={{
-                    animation: "smoothSlideIn 1.5s ease-out 0.3s both",
+                    animation:
+                      "rotateIn 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both",
                   }}
                 >
                   <div className="absolute top-0 right-0 w-16 h-16 sm:w-32 sm:h-32 bg-blue-500/10 rounded-full blur-lg sm:blur-xl"></div>
@@ -596,14 +597,18 @@ const Hero = () => {
       </section>
 
       <style>{`
-        @keyframes smoothSlideIn {
+        @keyframes rotateIn {
           0% {
             opacity: 0;
-            transform: translateX(30px) scale(0.95);
+            transform: translateX(-100%) rotate(-180deg) scale(0.5);
+          }
+          60% {
+            opacity: 0.8;
+            transform: translateX(10%) rotate(-10deg) scale(1.02);
           }
           100% {
             opacity: 1;
-            transform: translateX(0) scale(1);
+            transform: translateX(0) rotate(0deg) scale(1);
           }
         }
 
