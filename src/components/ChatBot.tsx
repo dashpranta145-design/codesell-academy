@@ -16,6 +16,9 @@ export default function Chatbot(): React.ReactElement {
   const [loading, setLoading] = useState(false);
   const bodyRef = useRef<HTMLDivElement | null>(null);
 
+  // Your backend URL - UPDATED
+  const API_URL = "https://codesell-academy.com/backend/server";
+
   useEffect(() => {
     bodyRef.current?.scrollTo({
       top: bodyRef.current.scrollHeight,
@@ -38,12 +41,12 @@ export default function Chatbot(): React.ReactElement {
       const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
 
       const res = await fetch(
-        "https://codesell-academy-backend1.onrender.com/chat",
+        `${API_URL}/chat`, // UPDATED URL
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            // "x-frontend-secret": "WE_ARE_10_262025",
+            "x-frontend-secret": "WE_ARE_10_262025", // UNCOMMENTED - this is important!
           },
           body: JSON.stringify({ message: text }),
           signal: controller.signal,
