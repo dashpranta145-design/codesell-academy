@@ -38,38 +38,40 @@ export default function Chatbot(): React.ReactElement {
 
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+      const timeoutId = setTimeout(() => controller.abort(), 30000);
 
-      const res = await fetch(
-        `${API_URL}/chat`, // UPDATED URL
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-frontend-secret": "WE_ARE_10_262025", // UNCOMMENTED - this is important!
-          },
-          body: JSON.stringify({ message: text }),
-          signal: controller.signal,
-        }
-      );
+      console.log("Sending request to:", `${API_URL}/chat`);
+
+      const res = await fetch(`${API_URL}/chat`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-frontend-secret": "WE_ARE_10_262025",
+        },
+        body: JSON.stringify({ message: text }),
+        signal: controller.signal,
+      });
 
       clearTimeout(timeoutId);
 
+      console.log("Response status:", res.status);
+
       if (!res.ok) {
-        const err = await res.json().catch(() => ({ error: "Unknown error" }));
-        throw new Error(
-          err?.error || `Request failed with status ${res.status}`
-        );
+        const errorText = await res.text();
+        console.error("Error response:", errorText);
+        throw new Error(`HTTP ${res.status}: ${errorText}`);
       }
 
       const data = await res.json();
+      console.log("Success response:", data);
+
       const botMsg: Msg = {
         sender: "bot",
         text: data?.reply || "I couldn't find an answer right now.",
       };
       setMessages((prev) => [...prev, botMsg]);
     } catch (err: any) {
-      console.error("Chat send error:", err);
+      console.error("Chat send error details:", err);
 
       let errorMessage =
         "⚠️ সার্ভারের সাথে যোগাযোগ করা যাচ্ছে না। পরে চেষ্টা করুন।";
