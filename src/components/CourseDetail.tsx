@@ -113,7 +113,7 @@ const courseDetails: Record<string, CourseContent> = {
       "Key Comparison",
     ],
     duration: "3 Months - 3 sessions/week (2 hours each)",
-    fee: "BDT 3000",
+    fee: "BDT 3500",
   },
   "digital-marketing": {
     description:
@@ -130,7 +130,7 @@ const courseDetails: Record<string, CourseContent> = {
       "Live Projects & Practical Implementation",
     ],
     duration: "6 Months - 3 sessions/week (2 hours each)",
-    fee: "BDT 10,000 (Installment available)",
+    fee: "BDT 15,000 (Installment available)",
   },
   frontend: {
     description:
@@ -215,7 +215,7 @@ const courseDetails: Record<string, CourseContent> = {
       "Interview & Professional Communication",
     ],
     duration: "3 Months - 3 sessions/week (1.5 hours each)",
-    fee: "BDT 3,000",
+    fee: "BDT 3500",
   },
   "comp-spoken": {
     description:
