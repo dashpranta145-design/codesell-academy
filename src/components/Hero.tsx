@@ -40,8 +40,8 @@ const NeuralLogo = () => {
           layer === 0
             ? size * 0.0375
             : layer === 1
-            ? size * 0.03125
-            : size * 0.025;
+              ? size * 0.03125
+              : size * 0.025;
         this.pulsePhase = Math.random() * Math.PI * 2;
         this.pulseSpeed = 0.03 + Math.random() * 0.02;
       }
@@ -61,7 +61,7 @@ const NeuralLogo = () => {
           0,
           this.x,
           this.y,
-          this.currentSize * 3
+          this.currentSize * 3,
         );
         glowGradient.addColorStop(0, "rgba(139, 169, 255, 0.6)");
         glowGradient.addColorStop(0.4, "rgba(99, 135, 255, 0.3)");
@@ -78,7 +78,7 @@ const NeuralLogo = () => {
           0,
           this.x,
           this.y,
-          this.currentSize
+          this.currentSize,
         );
         coreGradient.addColorStop(0, "#d4e0ff");
         coreGradient.addColorStop(0.5, "#8BA9FF");
@@ -95,7 +95,7 @@ const NeuralLogo = () => {
           this.y - this.currentSize * 0.2,
           this.currentSize * 0.4,
           0,
-          Math.PI * 2
+          Math.PI * 2,
         );
         ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
         ctx.fill();
@@ -132,7 +132,7 @@ const NeuralLogo = () => {
           this.node1.x,
           this.node1.y,
           this.node2.x,
-          this.node2.y
+          this.node2.y,
         );
         lineGradient.addColorStop(0, "rgba(139, 169, 255, 0.15)");
         lineGradient.addColorStop(0.5, "rgba(139, 169, 255, 0.3)");
@@ -157,7 +157,7 @@ const NeuralLogo = () => {
             0,
             x,
             y,
-            particle.size * 2
+            particle.size * 2,
           );
           particleGradient.addColorStop(0, "#ffffff");
           particleGradient.addColorStop(0.3, "#c8d6ff");
@@ -390,6 +390,292 @@ const Hero = () => {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(139,169,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,169,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px] sm:bg-[size:40px_40px] md:bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]"></div>
 
         <div className="container mx-auto relative z-10 max-w-6xl">
+          {/* Advertising Cards Section */}
+          <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 mb-8 sm:mb-10 md:mb-12">
+            {/* Left Side Card - Courses Promotion */}
+            <div
+              className="lg:w-1/2 transform transition-all duration-500 hover:scale-[1.02]"
+              style={{
+                animation: "slideInLeft 1s ease-out 0.5s both",
+                transform: "perspective(1000px) rotateY(-5deg)",
+              }}
+            >
+              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl shadow-blue-500/20 border border-blue-500/20 bg-gradient-to-br from-slate-800/70 to-slate-900/70 backdrop-blur-sm p-4 sm:p-6 md:p-8">
+                {/* Background effects */}
+                <div className="absolute top-0 left-0 w-32 h-32 bg-blue-500/10 rounded-full blur-xl"></div>
+                <div className="absolute bottom-0 right-0 w-24 h-24 bg-cyan-500/10 rounded-full blur-lg"></div>
+
+                {/* Header */}
+                <div className="relative mb-4 sm:mb-6">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">
+                    🚀 নতুন ব্যাচ শুরু হচ্ছে!
+                  </h3>
+                  <p className="text-slate-300 text-sm sm:text-base">
+                    ডিজিটাল মার্কেটিং এবং ওয়েব ডেভেলপমেন্টে আপনার ক্যারিয়ার
+                    শুরু করুন
+                  </p>
+                </div>
+
+                {/* Courses Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
+                  {/* Web Development Course */}
+                  <div className="relative p-3 sm:p-4 rounded-lg bg-slate-900/50 border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300">
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shrink-0">
+                        <svg
+                          className="w-5 h-5 sm:w-6 sm:h-6 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                          />
+                        </svg>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-white text-sm sm:text-base">
+                          ওয়েব ডেভেলপমেন্ট
+                        </h4>
+                        <p className="text-slate-400 text-xs sm:text-sm mt-1">
+                          HTML, CSS, JavaScript, React, Node.js
+                        </p>
+                        <div className="flex items-center gap-2 mt-2">
+                          <span className="text-xs px-2 py-1 bg-blue-500/20 text-blue-300 rounded">
+                            ৬ মাস
+                          </span>
+                          <span className="text-xs px-2 py-1 bg-green-500/20 text-green-300 rounded">
+                            প্র্যাকটিকাল
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Digital Marketing Course */}
+                  <div className="relative p-3 sm:p-4 rounded-lg bg-slate-900/50 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shrink-0">
+                        <svg
+                          className="w-5 h-5 sm:w-6 sm:h-6 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                          />
+                        </svg>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-white text-sm sm:text-base">
+                          ডিজিটাল মার্কেটিং
+                        </h4>
+                        <p className="text-slate-400 text-xs sm:text-sm mt-1">
+                          SEO, Social Media, Google Ads, Analytics
+                        </p>
+                        <div className="flex items-center gap-2 mt-2">
+                          <span className="text-xs px-2 py-1 bg-purple-500/20 text-purple-300 rounded">
+                            ৬ মাস
+                          </span>
+                          <span className="text-xs px-2 py-1 bg-green-500/20 text-green-300 rounded">
+                            প্রজেক্ট ভিত্তিক
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Call to Action */}
+                <div className="relative">
+                  <button className="w-full group px-4 sm:px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 rounded-lg font-semibold text-sm sm:text-base text-white shadow-lg shadow-blue-500/50 hover:shadow-xl transition-all duration-300 overflow-hidden">
+                    <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-400 opacity-0 group-hover:opacity-80 transition-opacity duration-300"></span>
+                    <span className="relative flex items-center justify-center gap-2">
+                      <svg
+                        className="w-4 h-4 sm:w-5 sm:h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                        />
+                      </svg>
+                      এখনই এনরোল করুন
+                    </span>
+                  </button>
+                </div>
+                <p className="text-center text-xs text-slate-400 mt-2">
+                  সীমিত আসন - এখনই আসন নিশ্চিত করুন ।
+                </p>
+              </div>
+            </div>
+
+            {/* Right Side Card - Discount Offer */}
+            <div
+              className="lg:w-1/2 transform transition-all duration-500 hover:scale-[1.02]"
+              style={{
+                animation: "slideInRight 1s ease-out 0.5s both",
+                transform: "perspective(1000px) rotateY(5deg)",
+              }}
+            >
+              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl shadow-purple-500/20 border border-purple-500/20 bg-gradient-to-br from-slate-900/70 to-purple-900/20 backdrop-blur-sm p-4 sm:p-6 md:p-8">
+                {/* Background effects */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-xl"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-pink-500/10 rounded-full blur-lg"></div>
+
+                {/* Header with countdown */}
+                <div className="relative mb-4 sm:mb-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">
+                      💰 মেগা ডিসকাউন্ট অফার!
+                    </h3>
+                    <div className="px-2 sm:px-3 py-1 bg-red-500/20 text-red-300 rounded-lg text-xs font-bold">
+                      <span className="animate-pulse">আর মাত্র ৩ দিন বাকি</span>
+                    </div>
+                  </div>
+                  <p className="text-slate-300 text-sm sm:text-base">
+                    আপনার স্বপ্ন পূরণে আমরা দিচ্ছি বিশাল ছাড়!
+                  </p>
+                </div>
+
+                {/* Discount Offers */}
+                <div className="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
+                  {/* Special Discount */}
+                  <div className="relative p-3 sm:p-4 rounded-lg bg-gradient-to-r from-purple-900/30 to-pink-900/30 border border-purple-500/30">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xl sm:text-2xl font-bold text-yellow-400">
+                            🔥 ৪০%
+                          </span>
+                          <span className="text-white font-bold text-sm sm:text-base">
+                            স্পেশাল ডিসকাউন্ট
+                          </span>
+                        </div>
+                        <p className="text-slate-300 text-xs sm:text-sm mt-1">
+                          প্রতি ব্যাচের প্রথম ১০ জনের জন্য!
+                        </p>
+                      </div>
+                      <div className="relative">
+                        {/* Background glow */}
+                        <div className="absolute inset-0 bg-yellow-500/10 rounded-full blur-md"></div>
+
+                        {/* Main circle */}
+                        <div className="relative w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-yellow-600/20 to-amber-600/20 backdrop-blur-sm rounded-full border-2 border-yellow-500/30 flex flex-col items-center justify-center p-2">
+                          {/* "প্রথম" text */}
+                          <div className="text-xs sm:text-sm font-bold text-yellow-300 mb-1">
+                            প্রথম
+                          </div>
+
+                          {/* "১০" text with glow effect */}
+                          <div className="text-2xl sm:text-3xl font-bold text-yellow-400 drop-shadow-lg">
+                            ১০
+                          </div>
+
+                          {/* Inner glow dot */}
+                          <div className="absolute w-3 h-3 sm:w-4 sm:h-4 bg-yellow-400/40 rounded-full blur-sm"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Flat Discount */}
+                  <div className="relative p-3 sm:p-4 rounded-lg bg-gradient-to-r from-blue-900/30 to-cyan-900/30 border border-cyan-500/30">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xl sm:text-2xl font-bold text-cyan-400">
+                            🔥 ৩০%
+                          </span>
+                          <span className="text-white font-bold text-sm sm:text-base">
+                            ফ্ল্যাট ডিসকাউন্ট
+                          </span>
+                        </div>
+                        <p className="text-slate-300 text-xs sm:text-sm mt-1">
+                          ২৫শে জানুয়ারির মধ্যে এনরোল করলেই
+                        </p>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-xs text-slate-400 mb-1">
+                          শেষ তারিখ
+                        </div>
+                        <div className="text-lg sm:text-xl font-bold text-white bg-slate-800/50 px-3 py-1 rounded-lg">
+                          ২৫ জানুয়ারি
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Features */}
+                <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
+                  <div className="text-center p-2 sm:p-3 rounded-lg bg-slate-900/50 border border-green-500/20">
+                    <div className="text-lg sm:text-xl font-bold text-green-400">
+                      🎯
+                    </div>
+                    <div className="text-xs text-slate-300 mt-1">
+                      লাইভ ক্লাস
+                    </div>
+                  </div>
+                  <div className="text-center p-2 sm:p-3 rounded-lg bg-slate-900/50 border border-blue-500/20">
+                    <div className="text-lg sm:text-xl font-bold text-blue-400">
+                      📚
+                    </div>
+                    <div className="text-xs text-slate-300 mt-1">
+                      ম্যাটেরিয়াল
+                    </div>
+                  </div>
+                  <div className="text-center p-2 sm:p-3 rounded-lg bg-slate-900/50 border border-purple-500/20">
+                    <div className="text-lg sm:text-xl font-bold text-purple-400">
+                      💼
+                    </div>
+                    <div className="text-xs text-slate-300 mt-1">
+                      প্লেসমেন্ট
+                    </div>
+                  </div>
+                  <div className="text-center p-2 sm:p-3 rounded-lg bg-slate-900/50 border border-cyan-500/20">
+                    <div className="text-lg sm:text-xl font-bold text-cyan-400">
+                      🤝
+                    </div>
+                    <div className="text-xs text-slate-300 mt-1">সাপোর্ট</div>
+                  </div>
+                </div>
+
+                {/* Action Button */}
+                <button className="w-full px-4 sm:px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600  hover:from-purple-700 rounded-lg font-semibold text-sm sm:text-base text-white shadow-lg shadow-purple-500/50 transition-all duration-300 overflow-hidden">
+                  <span className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-400 opacity-0 transition-opacity duration-300"></span>
+                  <span className="relative flex items-center justify-center gap-2">
+                    <svg
+                      className="w-4 h-4 sm:w-5 sm:h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                      />
+                    </svg>
+                    ডিসকাউন্ট নিয়ে এনরোল করুন
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+
           {/* Main Hero Content */}
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
             {/* Text Content - Left Side */}
@@ -424,13 +710,13 @@ const Hero = () => {
 
               {/* Buttons with reduced width and side by side */}
               <div className="flex flex-row gap-2 sm:gap-3 justify-center lg:justify-start pt-2 sm:pt-3">
-                <a
-                  href="/courses"
+                <Link
+                  to="/courses"
                   className="group relative px-4 sm:px-5 py-2 sm:py-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full font-semibold text-xs sm:text-sm text-white shadow-lg shadow-blue-500/50 hover:shadow-xl hover:scale-105 transition-all duration-300 overflow-hidden whitespace-nowrap flex-1 max-w-[140px] sm:max-w-[160px]"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-400 opacity-0 group-hover:opacity-80 transition-opacity duration-300"></span>
                   <span className="relative flex items-center justify-center gap-1 sm:gap-2">
-                    <Link to="/courses">Explore Courses</Link>
+                    Explore Courses
                     <svg
                       className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform"
                       fill="none"
@@ -445,14 +731,14 @@ const Hero = () => {
                       />
                     </svg>
                   </span>
-                </a>
+                </Link>
 
-                <a
-                  href="/about"
+                <Link
+                  to="/about"
                   className="group px-4 sm:px-5 py-2 sm:py-3 bg-slate-800/50 backdrop-blur-sm border-2 border-blue-400/30 rounded-full font-semibold text-xs sm:text-sm text-blue-200 hover:bg-slate-800/70 hover:border-blue-400/50 transition-all duration-300 whitespace-nowrap flex-1 max-w-[120px] sm:max-w-[140px]"
                 >
                   <span className="flex items-center justify-center gap-1 sm:gap-2">
-                    <Link to="blog/coding">Learn More</Link>
+                    Learn More
                     <svg
                       className="w-3 h-3 sm:w-4 sm:h-4"
                       fill="none"
@@ -467,7 +753,7 @@ const Hero = () => {
                       />
                     </svg>
                   </span>
-                </a>
+                </Link>
               </div>
 
               {/* Stats */}
@@ -609,6 +895,28 @@ const Hero = () => {
           100% {
             opacity: 1;
             transform: translateX(0) rotate(0deg) scale(1);
+          }
+        }
+
+        @keyframes slideInLeft {
+          0% {
+            opacity: 0;
+            transform: translateX(-50px) perspective(1000px) rotateY(-10deg);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0) perspective(1000px) rotateY(-5deg);
+          }
+        }
+
+        @keyframes slideInRight {
+          0% {
+            opacity: 0;
+            transform: translateX(50px) perspective(1000px) rotateY(10deg);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0) perspective(1000px) rotateY(5deg);
           }
         }
 
